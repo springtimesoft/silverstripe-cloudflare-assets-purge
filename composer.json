@@ -1,0 +1,16 @@
+{
+    "name": "springtimesoft/silverstripe-cloudflare-assets-purge",
+    "description": "Queues a Cloudflare cache purge when SilverStripe assets are published, unpublished, or deleted",
+    "license": "BSD-3-Clause",
+    "type": "silverstripe-vendormodule",
+    "require": {
+        "ext-curl": "*",
+        "silverstripe/framework": "^5",
+        "symbiote/silverstripe-queuedjobs": "^5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Springtimesoft\\CloudflareAssetsPurge\\": "src/"
+        }
+    }
+}

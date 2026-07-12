@@ -1,0 +1,7 @@
+SilverStripe\Assets\File:
+  extensions:
+    - Springtimesoft\CloudflareAssetsPurge\Extensions\FileCachePurgeExtension
+
+SilverStripe\ORM\DatabaseAdmin:
+  extensions:
+    - Springtimesoft\CloudflareAssetsPurge\Extensions\DevBuildCachePurgeExtension
