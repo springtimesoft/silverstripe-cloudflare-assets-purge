@@ -1,8 +1,24 @@
 {
     "name": "springtimesoft/silverstripe-cloudflare-assets-purge",
-    "description": "Queues a Cloudflare cache purge when SilverStripe assets are published, unpublished, or deleted",
-    "license": "BSD-3-Clause",
+    "description": "Queues a Cloudflare cache purge when Silverstripe assets are published, unpublished, or deleted",
     "type": "silverstripe-vendormodule",
+    "homepage": "https://github.com/springtimesoft/silverstripe-cloudflare-assets-purge",
+    "keywords": [
+        "silverstripe",
+        "cloudflare",
+        "cache",
+        "cdn"
+    ],
+    "support": {
+        "issues": "https://github.com/springtimesoft/silverstripe-cloudflare-assets-purge/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Springtimesoft",
+            "homepage": "https://springtimesoft.co.nz/"
+        }
+    ],
     "require": {
         "ext-curl": "*",
         "silverstripe/framework": "^5",

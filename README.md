@@ -1,12 +1,12 @@
-# silverstripe-cloudflare-assets-purge
+# Silverstripe Cloudflare Assets Purge
 
-> **Beta:** This module is currently in beta for SilverStripe 5. A full release with SilverStripe 6 compatibility is planned.
+> **Beta:** This module is currently in beta for Silverstripe 5. A full release with Silverstripe 6 compatibility is planned.
 
-Automatically purges the Cloudflare cache when SilverStripe assets are published, unpublished, or deleted, and after a `dev/build`.
+Automatically purges the Cloudflare cache when Silverstripe assets are published, unpublished, or deleted, and after a `dev/build`.
 
 ## Requirements
 
-- SilverStripe 5
+- Silverstripe ^5
 - [symbiote/silverstripe-queuedjobs](https://github.com/symbiote/silverstripe-queuedjobs) ^5
 
 ## Installation
@@ -30,13 +30,13 @@ If either variable is absent the module silently does nothing, so it is safe to 
 
 ## How it works
 
-- **File / Image publish** — queues a full-zone cache purge via `FileCachePurgeExtension::onAfterPublish`.
-- **File / Image unpublish** — queues a purge via `FileCachePurgeExtension::onAfterUnpublish`.
-- **File / Image delete** — queues a purge only when a live version exists (draft-only files have nothing cached).
-- **dev/build** — queues a purge via `DevBuildCachePurgeExtension::onAfterBuild`.
+- **File / Image publish** - queues a full-zone cache purge via `FileCachePurgeExtension::onAfterPublish`.
+- **File / Image unpublish** - queues a purge via `FileCachePurgeExtension::onAfterUnpublish`.
+- **File / Image delete** - queues a purge only when a live version exists (draft-only files have nothing cached).
+- **dev/build** - queues a purge via `DevBuildCachePurgeExtension::onAfterBuild`.
 
-Purges are handled asynchronously by `PurgeWebsiteAssetsJob`, which calls the [Cloudflare Cache Purge API](https://developers.cloudflare.com/api/resources/cache/methods/purge/) with `purge_everything: true`. This flushes the **entire zone cache** — not just assets — so pages, CSS, JS, and any other cached responses will also be invalidated.
+Purges are handled asynchronously by `PurgeWebsiteAssetsJob`, which calls the [Cloudflare Cache Purge API](https://developers.cloudflare.com/api/resources/cache/methods/purge/) with `purge_everything: true`. This flushes the **entire zone cache** - not just assets - so pages, CSS, JS, and any other cached responses will also be invalidated.
 
 ## License
 
-BSD-3-Clause
+MIT License. See [LICENSE](LICENSE) for details.

@@ -22,7 +22,7 @@ class PurgeWebsiteAssetsJob extends AbstractQueuedJob
 {
     public function getTitle(): string
     {
-        return 'Purge Website Assets from CloudFlare';
+        return 'Purge Website Assets from Cloudflare';
     }
 
     public function setup(): void
@@ -43,12 +43,12 @@ class PurgeWebsiteAssetsJob extends AbstractQueuedJob
 
         // Skip gracefully in environments where Cloudflare is not configured.
         if (!$zoneID || !$apiToken) {
-            $this->addMessage('CloudFlare credentials not found, skipping.');
+            $this->addMessage('Cloudflare credentials not found, skipping.');
             $this->isComplete = true;
 
             return;
         }
-        $this->addMessage('CloudFlare environment credentials found.');
+        $this->addMessage('Cloudflare environment credentials found.');
 
         // purge_everything invalidates the whole zone; no URL list needed.
         $data = json_encode(['purge_everything' => true]);
@@ -69,13 +69,13 @@ class PurgeWebsiteAssetsJob extends AbstractQueuedJob
         // curl_errno only catches network-level failures (DNS, connection refused).
         // HTTP 4xx/5xx responses do not set a curl error.
         if (curl_errno($ch)) {
-            $this->addMessage('CloudFlare curl error: ' . curl_error($ch));
+            $this->addMessage('Cloudflare curl error: ' . curl_error($ch));
             $this->isComplete = true;
 
             return;
         }
 
-        $this->addMessage('Connected to CloudFlare.');
+        $this->addMessage('Connected to Cloudflare.');
 
         $result = json_decode($response, true);
 
@@ -87,13 +87,13 @@ class PurgeWebsiteAssetsJob extends AbstractQueuedJob
             // Fall back to the raw HTTP code and body if Cloudflare did not return
             // a structured errors array (e.g. the response body was not JSON).
             $errors = $result['errors'] ?? ['HTTP ' . $httpCode . ': ' . $response];
-            $this->addMessage('Failed to purge CloudFlare cache: ' . json_encode($errors));
+            $this->addMessage('Failed to purge Cloudflare cache: ' . json_encode($errors));
             $this->isComplete = true;
 
             return;
         }
 
-        $this->addMessage('Successfully purged CloudFlare cache.');
+        $this->addMessage('Successfully purged Cloudflare cache.');
         $this->currentStep = 1;
         $this->isComplete  = true;
     }
