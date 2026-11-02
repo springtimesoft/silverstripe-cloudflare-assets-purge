@@ -33,7 +33,7 @@ Additionally, you must have the [queued jobs](https://github.com/symbiote/silver
 - **File / Image publish** - queues a full-zone cache purge via `FileCachePurgeExtension::onAfterPublish`.
 - **File / Image unpublish** - queues a purge via `FileCachePurgeExtension::onAfterUnpublish`.
 - **File / Image delete** - queues a purge only when a live version exists (draft-only files have nothing cached).
-- **dev/build** - queues a purge via `DevBuildCachePurgeExtension::onAfterBuild`.
+- **db:build** - queues a purge via `DevBuildCachePurgeExtension::onAfterBuild`.
 
 Purges are handled asynchronously by `PurgeWebsiteAssetsJob`, which calls the [Cloudflare Cache Purge API](https://developers.cloudflare.com/api/resources/cache/methods/purge/) with `purge_everything: true`. This flushes the **entire zone cache** - not just assets - so pages, CSS, JS, and any other cached responses will also be invalidated.
 
