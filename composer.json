@@ -21,8 +21,8 @@
     ],
     "require": {
         "ext-curl": "*",
-        "silverstripe/framework": "^5",
-        "symbiote/silverstripe-queuedjobs": "^5"
+        "silverstripe/framework": "^6",
+        "symbiote/silverstripe-queuedjobs": "^6"
     },
     "autoload": {
         "psr-4": {
